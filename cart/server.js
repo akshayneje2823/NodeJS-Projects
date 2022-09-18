@@ -6,11 +6,11 @@ let userouter = require('./routes/productRouter');
 
 const app = express();
 
-// configure  or read  env variables
+// configure or read env variables
 dotenev.config({ path: './config/config.env' });
 
 let port = process.env.PORT;
-// let host_name = process.env.HOST_NAME
+let host_name = process.env.HOST_NAME
 
 app.use(morgan('tiny'));//HTTP Logger
 
@@ -30,7 +30,10 @@ app.use(express.urlencoded({extended : false}));
 
 // mongoDB connectionmongosh
 
-mongoose.connect(process.env.MONGO_DB_LOCAL_URL)
+mongoose.connect(process.env.MONGO_DB_LOCAL_URL,{
+    useUnifiedTopology: true,
+    useNewUrlParser: true,
+})
     .then((respone) => {
         console.log("connetced to mnogodDB!")
     })

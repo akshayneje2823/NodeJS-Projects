@@ -18,13 +18,16 @@ URL : http//8080/api/products
 METHOD : GET
 Require Fields : No
 */
-router.get('/products',(request,response)=>{
-    let products = Products.find();
+
+router.get('/products',async(request,response)=>{
+    let products =await Products.find();
     if (!products) {
         response.status(401).json({message : 'Products Not Found'})
     }
     response.status(401).json(products)
 })
+
+
 /*
 Info : Create All Products
 URL : http//8080/api/products
@@ -47,7 +50,7 @@ router.post('/products', async (request,response)=>{
     }
     catch(err){
         console.log(err);
-        return response.status(500).json(product)
+        return response.status(500).json({message : 'message'})
     }
 
 })
