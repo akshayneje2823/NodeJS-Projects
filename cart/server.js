@@ -1,7 +1,8 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const dotenev = require('dotenv');
-let userouter = require('./routes/productRouter')
+const morgan = require('morgan')
+let userouter = require('./routes/productRouter');
 
 const app = express();
 
@@ -11,6 +12,7 @@ dotenev.config({ path: './config/config.env' });
 let port = process.env.PORT;
 // let host_name = process.env.HOST_NAME
 
+app.use(morgan('tiny'));//HTTP Logger
 
 // Home Route 
 app.get('/', (req, res) => {
@@ -20,6 +22,10 @@ app.get('/', (req, res) => {
 // Using Routes
 app.use('/api', userouter);
 
+
+// configure express to accept form data
+app.use(express.json());
+app.use(express.urlencoded({extended : false}));
 
 
 // mongoDB connectionmongosh
