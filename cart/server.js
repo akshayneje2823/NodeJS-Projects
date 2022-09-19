@@ -1,7 +1,8 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const dotenev = require('dotenv');
-const morgan = require('morgan')
+const morgan = require('morgan');
+const cors = require('cors');
 let userouter = require('./routes/productRouter');
 
 const app = express();
@@ -25,7 +26,10 @@ app.use('/api', userouter);
 
 // configure express to accept form data
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: true }));
+
+//enable cors 
+app.use(cors())
 
 
 // mongoDB connectionmongosh

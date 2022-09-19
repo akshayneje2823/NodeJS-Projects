@@ -2,15 +2,15 @@ const mongoose = require('mongoose');
 
 // Creating Peoduct Scema  
 
-let productScem = mongoose.Schema({
-    name: { type: String, required: true },
-    image: { type: String, required: true },
-    price: { type: String, required: true },
-    qty: { type: String, required: true },
-    info: { type: String, required: true }
+let productScema = mongoose.Schema({
+    name: { type: String, require: true },
+    image: { type: String, require: true },
+    price: { type: Number, require: true },
+    qty: { type: Number, require: true },
+    info: { type: String, require: true }
 })
 
-let Product = mongoose.model('product', productScem);
+let Product = mongoose.model('product', productScema);
 
 /*
  model = for creating collection('products) and passing defiend scema
