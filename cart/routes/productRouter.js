@@ -10,19 +10,15 @@ router.get("/", (req, res) => {
 
 
 // API Decelopement
+/*     Info : Get All Products
+       URL : http//8080/api/products
+       METHOD : GET
+       Require Fields : No             */
 
-
-/*
-Info : Get All Products
-URL : http//8080/api/products
-METHOD : GET
-Require Fields : No
-*/
-
-router.get('/products',async(request,response)=>{
-    let products =await Products.find();
+router.get('/products', async (request, response) => {
+    let products = await Products.find();
     if (!products) {
-        response.status(401).json({message : 'Products Not Found'})
+        response.status(401).json({ message: 'Products Not Found' })
     }
     response.status(401).json(products)
 })
@@ -34,23 +30,23 @@ URL : http//8080/api/products
 METHOD : POST
 Require Fields : name,image,prixe, qty,
 */
-router.post('/products', async (request,response)=>{
+router.post('/products/', async (request, response) => {
     console.log('inside create product API');
-    try{
+    try {
         let newProduct = {
-            name : request.body.name,
-            price : request.body.price,
-            image : request.body.image,
-            qty : request.body.qty,
-            info : request.body.info
+            name: request.body.name,
+            price: request.body.price,
+            image: request.body.image,
+            qty: request.body.qty,
+            info: request.body.info
         };
         let product = new Products(newProduct);
         product = await product.save();
-        response.status(200).json({resuly :"Product added successfuly",product : product})
+        response.status(200).json({ result: "Product added successfuly", product: product })
     }
-    catch(err){
+    catch (err) {
         console.log(err);
-        return response.status(500).json({message : 'message'})
+        return response.status(500).json({ message: 'message' })
     }
 
 })

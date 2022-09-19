@@ -25,12 +25,12 @@ app.use('/api', userouter);
 
 // configure express to accept form data
 app.use(express.json());
-app.use(express.urlencoded({extended : false}));
+app.use(express.urlencoded({ extended: false }));
 
 
 // mongoDB connectionmongosh
 
-mongoose.connect(process.env.MONGO_DB_LOCAL_URL,{
+mongoose.connect(process.env.MONGO_DB_LOCAL_URL, {
     useUnifiedTopology: true,
     useNewUrlParser: true,
 })
@@ -38,7 +38,7 @@ mongoose.connect(process.env.MONGO_DB_LOCAL_URL,{
         console.log("connetced to mnogodDB!")
     })
     .catch((err) => {
-        if(err) throw err;
+        if (err) throw err;
         console.error("Error..! Something is wrong.")
     })
 
