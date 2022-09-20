@@ -3,11 +3,15 @@ import { v4 as uuidv4 } from 'uuid';
 
 let allUsers = []
 
+
+// Get User
 export const getUsers = (req, res) => {
     // console.log(allUsers)
     res.send(allUsers)
 };
 
+
+// Create User
 export const createUser = (req, res) => {
     const user = req.body;
 
@@ -17,6 +21,8 @@ export const createUser = (req, res) => {
 
     console.log(`User with ${user.firstName} added to the database!`)
 }
+
+// Get User
 export const getUser = (req, res) => {
     // const id = req.params.id
     const { id } = req.params
@@ -25,6 +31,8 @@ export const getUser = (req, res) => {
 
     res.send(foundUser)
 }
+
+// Delete user
 export const deleteUser = (req, res) => {
     const { id } = req.params;
 

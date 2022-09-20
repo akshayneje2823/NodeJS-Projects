@@ -13,7 +13,16 @@ dotenev.config({ path: './config/config.env' });
 let port = process.env.PORT;
 let host_name = process.env.HOST_NAME
 
+
+
 app.use(morgan('tiny'));//HTTP Logger
+
+
+// configure express to accept form data
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+
 
 // Home Route 
 app.get('/', (req, res) => {
@@ -23,10 +32,6 @@ app.get('/', (req, res) => {
 // Using Routes
 app.use('/api', userouter);
 
-
-// configure express to accept form data
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
 
 //enable cors 
 app.use(cors())
