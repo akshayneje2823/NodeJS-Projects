@@ -19,6 +19,7 @@ app.use(morgan('tiny'));//HTTP Logger
 
 
 // configure express to accept form data
+// this should apply before routes
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 

@@ -22,6 +22,7 @@ export const createUser = (req, res) => {
     console.log(`User with ${user.firstName} added to the database!`)
 }
 
+
 // Get User
 export const getUser = (req, res) => {
     // const id = req.params.id
@@ -32,6 +33,7 @@ export const getUser = (req, res) => {
     res.send(foundUser)
 }
 
+
 // Delete user
 export const deleteUser = (req, res) => {
     const { id } = req.params;
@@ -40,6 +42,9 @@ export const deleteUser = (req, res) => {
 
     res.send(`User with id ${id} deleteed from database.`)
 }
+
+
+// Update User
 export const UpdateUser = (req, res) => {
     const { id, } = req.params;
     const { firstName, lastName, age } = req.body;
