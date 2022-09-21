@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 // Creating Peoduct Scema  
 
 let productScema = mongoose.Schema({
+    _id: mongoose.Schema.Types.ObjectId,
     name: { type: String, require: true },
     image: { type: String, require: true },
     price: { type: Number, require: true },

@@ -29,7 +29,7 @@ router.get('/products', async (request, response) => {
 Info : Create All Products
 URL : http//8080/api/products
 METHOD : POST
-Require Fields : name,image,prixe, qty,
+Require Fields : name,image,prixe, qty,info
 */
 router.post("/products/", async (request, response) => {
     console.log("inside create Product API")
@@ -102,16 +102,24 @@ router.delete('/product/:id', async (request, response) => {
 Info : Update Product
 URL : http://localhost:8080/api/product
 METHOD : PUT
-Requre Field
+Requre Field : name,image,price, qty,info
 */
 router.put('/product/:id', async (request, respone) => {
     console.log(request.params.id);
     try {
         let productId = request.params.id;
 
-        let product = await Product.findOneAndUpdate(productId);
+        let allProduct = await Product.findOneAndUpdate({ _id: productId }, {
+            $set: {
+                name: request.body.name,
+                price: request.body.price,
+                image: request.body.image,
+                qty: request.body.qty,
+                info: request.body.info
+            }
+        })
 
-        respone.status(200).json(product);
+        respone.status(200).json(allProduct);
 
     } catch (error) {
         console.error(error);
