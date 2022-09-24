@@ -14,7 +14,8 @@ router.get("/", (req, res) => {
 /*     Info : Get All Products
        URL : http//8080/api/products
        METHOD : GET
-       Require Fields : No             */
+       Require Fields : No             
+*/
 
 router.get('/products', async (request, response) => {
     let products = await Product.find();
@@ -53,6 +54,7 @@ router.post("/products/", async (request, response) => {
     }
 
 })
+
 /*
 Info : Get Single Products
 URL : http//8080/api/product/:id
