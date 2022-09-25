@@ -13,16 +13,17 @@ router.get("/", (req, res) => {
 // API Decelopement
 /*     Info : Get All Products
        URL : http//8080/api/products
+       
        METHOD : GET
        Require Fields : No             
 */
 
-router.get('/products', async (request, response) => {
+router.get("/products", async (request, response) => {
     let products = await Product.find();
     if (!products) {
-        response.status(401).json({ message: 'Products Not Found' })
+        response.status(401).json({ message: "Product Not Found" })
     }
-    response.status(401).json(products)
+    response.status(200).json(products)
 })
 
 
@@ -38,6 +39,7 @@ router.post("/products/", async (request, response) => {
     try {
         //reading data from form body
         let newProduct = {
+            _id: request.params._id,
             name: request.body.name,
             price: request.body.price,
             image: request.body.image,
