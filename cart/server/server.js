@@ -23,7 +23,8 @@ app.use(morgan('tiny'));//HTTP Logger
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-
+//enable cors 
+app.use(cors())
 
 // Home Route 
 app.get('/', (req, res) => {
@@ -34,9 +35,6 @@ app.get('/', (req, res) => {
 app.use('/api', userouter);
 
 
-//enable cors 
-app.use(cors())
-
 
 // mongoDB connectionmongosh
 
@@ -45,7 +43,7 @@ mongoose.connect(process.env.MONGO_DB_LOCAL_URL, {
     useNewUrlParser: true,
 })
     .then((respone) => {
-        console.log("connetced to mnogodDB!")
+        console.log("Connetced to mongodDB...")
     })
     .catch((err) => {
         if (err) throw err;
